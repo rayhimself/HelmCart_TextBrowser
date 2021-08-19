@@ -1,0 +1,28 @@
+apiVersion : apps/v1
+kind: Deployment
+metadata: 
+    name: text-browser-client-deployment
+    labels:
+        app: text-browser-client
+spec:
+    selector:
+        matchLabels: 
+            project: text-browser-client
+    template:
+        metadata:
+            labels:
+                project: text-browser-client
+        spec:
+            containers:
+                - name: text-browser-client
+                  image: rayhimself/text_browser_client
+                  ports:
+                    - containerPort: 5000
+                      name: client-port
+                  resources:
+                    requests:
+                      memory: "256Mi"
+                      cpu: "250m"
+                    limits:
+                      memory: "512Mi"
+                      cpu: "500m"

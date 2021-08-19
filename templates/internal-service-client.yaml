@@ -1,0 +1,10 @@
+apiVersion: v1
+kind: Service
+metadata:
+  name: text-browser-client-service
+spec:
+  selector:
+    project: text-browser-client
+  ports:
+  - port: 5000
+    targetPort: client-port

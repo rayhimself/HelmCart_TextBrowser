@@ -1,0 +1,28 @@
+apiVersion : apps/v1
+kind: Deployment
+metadata: 
+    name: text-browser-server-deployment
+    labels:
+        app: text-browser-server
+spec:
+    selector:
+        matchLabels: 
+            project: text-browser-server
+    template:
+        metadata:
+            labels:
+                project: text-browser-server
+        spec:
+            containers:
+                - name: text-browser-server
+                  image: rayhimself/text_browser_server
+                  ports:
+                    - containerPort: 8000
+                      name: server-port
+                  resources:
+                    requests:
+                      memory: "256Mi"
+                      cpu: "250m"
+                    limits:
+                      memory: "512Mi"
+                      cpu: "500m"
